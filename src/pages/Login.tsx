@@ -1,6 +1,10 @@
 
 import React from 'react';
 import LoginForm from '@/components/auth/LoginForm';
+import LeafBackground from '@/components/animations/LeafBackground';
+import FeatureShowcase from '@/components/auth/FeatureShowcase';
+import Testimonials from '@/components/auth/Testimonials';
+import { Sparkle, University } from 'lucide-react';
 
 const Login = () => {
   return (
@@ -8,17 +12,40 @@ const Login = () => {
       <div className="flex-1 flex flex-col lg:flex-row">
         {/* Hero Section */}
         <div className="bg-ivy lg:w-1/2 p-8 flex flex-col justify-center relative overflow-hidden">
+          {/* Background elements */}
           <div className="absolute inset-0 bg-gradient-to-br from-ivy to-ivy-dark opacity-90" />
           <div className="absolute inset-0 bg-[url('/ivy-pattern.png')] opacity-10" />
+          <LeafBackground leafCount={20} />
           
           <div className="relative z-10 max-w-md mx-auto lg:mx-0 lg:ml-auto text-white">
-            <h1 className="text-4xl lg:text-5xl font-bold mb-4">
-              Connect Across Campuses
-            </h1>
-            <p className="text-lg opacity-90 mb-6">
-              IvyTV brings together students from all Ivy League universities for meaningful video conversations.
-            </p>
-            <div className="flex flex-col space-y-4">
+            {/* Logo/branding section */}
+            <div className="flex items-center mb-8 animate-fade-in">
+              <div className="bg-white/10 backdrop-blur-md p-3 rounded-xl mr-3">
+                <University size={24} className="text-ivy-light" />
+              </div>
+              <div>
+                <h2 className="font-bold text-2xl">IvyTV</h2>
+                <p className="text-xs text-white/70">Ivy League Video Network</p>
+              </div>
+            </div>
+
+            {/* Main heading */}
+            <div className="relative">
+              <h1 className="text-4xl lg:text-5xl font-bold mb-4 animate-fade-in">
+                Connect Across
+                <div className="relative inline-flex mx-2">
+                  <span className="relative z-10">Campuses</span>
+                  <Sparkle className="text-ivy-light absolute -top-2 -right-3 z-0" size={16} />
+                </div>
+              </h1>
+              <p className="text-lg opacity-90 mb-8 animate-fade-in [animation-delay:200ms]">
+                IvyTV brings together students from all Ivy League universities 
+                for meaningful video conversations.
+              </p>
+            </div>
+            
+            {/* Features */}
+            <div className="flex flex-col space-y-4 animate-fade-in [animation-delay:400ms]">
               <div className="flex items-start">
                 <div className="bg-white/20 p-2 rounded-full mr-4">
                   <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-shield"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/></svg>
@@ -49,6 +76,12 @@ const Login = () => {
                 </div>
               </div>
             </div>
+
+            {/* Testimonials */}
+            <Testimonials />
+            
+            {/* Feature Showcase */}
+            <FeatureShowcase />
           </div>
         </div>
         
