@@ -20,7 +20,12 @@ export default defineConfig(({ mode }) => ({
       "@": path.resolve(__dirname, "./src"),
     },
   },
-  // Add optimizeDeps to handle the cloudinary package
+  define: {
+    // Define process.env to prevent errors with Node.js libraries
+    'process.env': {},
+    // Node.js global to browser globalThis
+    global: 'globalThis',
+  },
   optimizeDeps: {
     esbuildOptions: {
       // Node.js global to browser globalThis

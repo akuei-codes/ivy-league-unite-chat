@@ -1,12 +1,11 @@
 
-import { v2 as cloudinary } from 'cloudinary';
+// We don't need to import the full Cloudinary SDK for browser uploads
+// We'll use the Cloudinary Upload API directly
 
-cloudinary.config({ 
-  cloud_name: 'day4bponq', 
-  api_key: '682752992272986', 
-  api_secret: '22hua_tHocSqmrnBPfRTy9PLVBQ',
-  secure: true
-});
+// Cloudinary configuration
+const CLOUD_NAME = 'day4bponq';
+const API_KEY = '682752992272986';
+const UPLOAD_PRESET = 'ml_default';
 
 export const uploadImage = async (file: File) => {
   try {
@@ -14,17 +13,22 @@ export const uploadImage = async (file: File) => {
     const base64data = await convertToBase64(file);
     
     // Upload to cloudinary
-    const uploadResponse = await fetch('https://api.cloudinary.com/v1_1/day4bponq/image/upload', {
+    const uploadResponse = await fetch(`https://api.cloudinary.com/v1_1/${CLOUD_NAME}/image/upload`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
         file: base64data,
-        upload_preset: 'ml_default',
-        api_key: '682752992272986',
+        upload_preset: UPLOAD_PRESET,
+        api_key: API_KEY,
       })
     });
+    
+    if (!uploadResponse.ok) {
+      const errorData = await uploadResponse.json();
+      throw new Error(`Upload failed: ${errorData.error?.message || 'Unknown error'}`);
+    }
     
     const uploadData = await uploadResponse.json();
     return { url: uploadData.secure_url, publicId: uploadData.public_id };

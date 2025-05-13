@@ -1,6 +1,4 @@
 
 /// <reference types="vite/client" />
 
-declare module 'cloudinary' {
-  export const v2: any;
-}
+// No need for the cloudinary module declaration since we're not using it directly anymore
