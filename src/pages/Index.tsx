@@ -13,6 +13,7 @@ const Index = () => {
     const checkUser = async () => {
       try {
         const currentUser = await getCurrentUser();
+        console.log("Current user:", currentUser);
         setUser(currentUser);
       } catch (error) {
         console.error("Error checking user:", error);
@@ -36,12 +37,8 @@ const Index = () => {
     );
   }
 
-  // For development, we'll redirect to the home page for now
-  // In production with Supabase integration, this would check the actual auth state
-  // return user ? <Navigate to="/home" replace /> : <Navigate to="/login" replace />;
-  
-  // For now, let's redirect everyone to the login page for demonstration
-  return <Navigate to="/login" replace />;
+  // Now we can properly direct based on auth state
+  return user ? <Navigate to="/home" replace /> : <Navigate to="/login" replace />;
 };
 
 export default Index;
