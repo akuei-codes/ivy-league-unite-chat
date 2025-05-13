@@ -63,7 +63,7 @@ const FloatingName: React.FC<SchoolNameProps> = ({
   return (
     <div 
       className={cn(
-        "absolute font-serif transition-all duration-[7000ms] ease-in-out text-gray-300",
+        "absolute font-serif transition-all duration-[7000ms] ease-in-out text-ivy/30",
         sizeClasses[size],
         isVisible ? 'opacity-[var(--opacity)]' : 'opacity-0'
       )}

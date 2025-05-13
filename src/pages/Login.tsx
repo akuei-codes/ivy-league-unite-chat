@@ -12,10 +12,10 @@ const Login = () => {
     <div className="min-h-screen flex flex-col">
       <div className="flex-1 flex flex-col lg:flex-row">
         {/* Hero Section */}
-        <div className="bg-gradient-to-br from-gray-800/70 to-gray-900/80 backdrop-blur-md lg:w-1/2 p-8 flex flex-col justify-center relative overflow-hidden">
+        <div className="bg-ivy lg:w-1/2 p-8 flex flex-col justify-center relative overflow-hidden">
           {/* Background elements */}
-          <div className="absolute inset-0 bg-[url('/ivy-pattern.png')] opacity-5" />
-          <FloatingSchoolNames />
+          <div className="absolute inset-0 bg-gradient-to-br from-ivy to-ivy-dark opacity-90" />
+          <div className="absolute inset-0 bg-[url('/ivy-pattern.png')] opacity-10" />
           <LeafBackground leafCount={20} />
           
           <div className="relative z-10 max-w-md mx-auto lg:mx-0 lg:ml-auto text-white">
@@ -87,8 +87,12 @@ const Login = () => {
         </div>
         
         {/* Form Section */}
-        <div className="lg:w-1/2 p-8 flex items-center justify-center">
-          <LoginForm />
+        <div className="lg:w-1/2 p-8 flex items-center justify-center bg-gradient-to-br from-gray-100/80 to-gray-200/90 backdrop-blur-md relative">
+          <div className="absolute inset-0 bg-[url('/ivy-pattern.png')] opacity-5 z-0" />
+          <FloatingSchoolNames />
+          <div className="relative z-10">
+            <LoginForm />
+          </div>
         </div>
       </div>
     </div>
